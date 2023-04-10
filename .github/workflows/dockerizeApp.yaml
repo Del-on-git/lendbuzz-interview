@@ -9,6 +9,10 @@ on:
     branches:
       - "main"
       - "master"
-runs:
-  using: "docker"
-  image: "Dockerfile"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Building interview app docker image
+        run: docker build . --file Dockerfile --tag interview-app:$(date +%s)
