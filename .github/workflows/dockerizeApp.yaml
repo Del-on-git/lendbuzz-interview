@@ -10,22 +10,17 @@ on:
       - "main"
       - "master"
 jobs:
-  build:
+  build and push:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
+      - uses: actions/checkout@v3
       - name: Login to JFrog
         uses: docker/login-action@v2
         with:
           registry: delizardo.jfrog.io
           username: ${{ secrets.LENDBUZZ_USER }}
           password: ${{ secrets.LENDBUZZ_PASS }}
-      - name: Build and push
-        id: docker_interview_app_image
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          tags: delizardo.jfrog.io/interview-app:latest
+      - name: Build and publish to registry
+        run: docker build . --file Dockerfile --tag interview-app:$(date +%s)
+          docker run interview-app:$(date +%s)
+          docker push interview-app:$(date +%s)
