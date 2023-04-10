@@ -22,5 +22,5 @@ jobs:
           password: ${{ secrets.LENDBUZZ_PASS }}
       - name: Build and publish to registry
         run: docker build . --file Dockerfile --tag interview-app:$(date +%s)
-          docker run interview-app:$(date +%s)
-          docker push interview-app:$(date +%s)
+        run: docker run interview-app:$(date +%s)
+        run: docker push interview-app:$(date +%s)
