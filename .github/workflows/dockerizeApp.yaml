@@ -1,0 +1,14 @@
+name: dockerize-app
+run-name: Dockerizing the interview app
+on:
+  push:
+    branches:
+      - "main"
+      - "master"
+  pull_request:
+    branches:
+      - "main"
+      - "master"
+runs:
+  using: "docker"
+  image: "Dockerfile"
