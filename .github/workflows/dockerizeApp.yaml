@@ -10,7 +10,7 @@ on:
       - "main"
       - "master"
 jobs:
-  build and push:
+  buildNpush:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
