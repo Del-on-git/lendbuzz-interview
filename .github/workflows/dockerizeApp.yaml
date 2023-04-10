@@ -22,7 +22,7 @@ jobs:
         with:
           registry: delizardo.jfrog.io
           username: ${{ secrets.LENDBUZZ_USER }}
-          password: ${{ secrets.LENDBUZZ }}
+          password: ${{ secrets.LENDBUZZ_PASS }}
       - name: Build and push
         id: docker_interview_app_image
         uses: docker/build-push-action@v2
