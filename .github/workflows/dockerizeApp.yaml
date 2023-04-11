@@ -20,21 +20,10 @@ jobs:
           registry: delizardo.jfrog.io
           username: ${{ secrets.LENDBUZZ_USER }}
           password: ${{ secrets.LENDBUZZ_PASS }}
-      - name: build and push archive copy of image
+      - name: build and push image
         run: |
           export DATESTAMP=$(date +%Y%m%d)
           export HASH=$(git rev-parse --short HEAD)
           export TAG="$DATESTAMP-$HASH"
           docker build . --file Dockerfile -t delizardo.jfrog.io/interview-app-local/interview-app:$TAG -t delizardo.jfrog.io/interview-app-local/interview-app:latest
           docker push delizardo.jfrog.io/interview-app-local/interview-app --all-tags
-      #   run: |
-      #     export DATESTAMP=$(date +%Y%m%d)
-      #     export HASH=$(git rev-parse --short HEAD)
-      #     export TAG="$DATESTAMP-$HASH"
-      #     docker build . --file Dockerfile -t interview-app interview-app delizardo.jfrog.io/interview-app-local/interview-app:latest -t
-      #     docker tag interview-app delizardo.jfrog.io/interview-app-local/interview-app:$TAG
-      #     docker push delizardo.jfrog.io/interview-app-local/interview-app:$TAG
-      # - name: tag new build as latest and push
-      #   run: |
-      #     docker tag interview-app delizardo.jfrog.io/interview-app-local/interview-app:latest
-      #     docker push delizardo.jfrog.io/interview-app-local/interview-app:latest
