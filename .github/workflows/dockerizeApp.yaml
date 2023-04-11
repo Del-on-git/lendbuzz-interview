@@ -27,7 +27,8 @@ jobs:
           export TAG="$DATESTAMP-$HASH"
       - name: build and push archive copy of image
         run: |
-          docker build . --file Dockerfile --tag delizardo.jfrog.io/interview-app-local/interview-app:$TAG
+          docker build . --file Dockerfile --tag interview-app
+          docker tag interview-app delizardo.jfrog.io/interview-app-local/interview-app:$TAG
           docker push delizardo.jfrog.io/interview-app-local/interview-app:$TAG
       - name: tag new build as latest and push
         run: |
