@@ -25,8 +25,8 @@ jobs:
           export DATESTAMP=$(date +%Y%m%d)
           export HASH=$(git rev-parse --short HEAD)
           export TAG="$DATESTAMP-$HASH"
-          docker build . --file Dockerfile --tag delizardo.jfrog.io/interview-app-local/interview-app:$TAG
-          docker push delizardo.jfrog.io/interview-app-local/interview-app:$TAG
+          docker build . --file Dockerfile -t delizardo.jfrog.io/interview-app-local/interview-app:$TAG delizardo.jfrog.io/interview-app-local/interview-app:latest
+          docker push delizardo.jfrog.io/interview-app-local/interview-app --all-tags
       #   run: |
       #     export DATESTAMP=$(date +%Y%m%d)
       #     export HASH=$(git rev-parse --short HEAD)
