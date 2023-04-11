@@ -1,5 +1,5 @@
-name: dockerize-app
-run-name: Dockerizing the interview app
+name: containerize-app
+run-name: Containerizing the interview app
 on:
   push:
     branches:
@@ -25,5 +25,5 @@ jobs:
           export DATESTAMP=$(date +%Y%m%d)
           export HASH=$(git rev-parse --short HEAD)
           export TAG="$DATESTAMP-$HASH"
-          docker build . --file Dockerfile -t delizardo.jfrog.io/interview-app-local/interview-app:$TAG -t delizardo.jfrog.io/interview-app-local/interview-app:latest
+          docker build . --file docker/app/Dockerfile -t delizardo.jfrog.io/interview-app-local/interview-app:$TAG -t delizardo.jfrog.io/interview-app-local/interview-app:latest
           docker push delizardo.jfrog.io/interview-app-local/interview-app --all-tags
