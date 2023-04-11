@@ -23,5 +23,5 @@ jobs:
       - name: Build and publish to registry
         run: |
           docker build . --file Dockerfile --tag interview-app:latest
-          docker tag interview-app:latest interview-app-local/interview-app:latest
+          docker tag interview-app:latest delizardo.jfrog.io/interview-app-local/interview-app:latest
           docker push delizardo.jfrog.io/interview-app-local/interview-app:latest
