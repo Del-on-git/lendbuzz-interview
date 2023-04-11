@@ -22,6 +22,6 @@ jobs:
           password: ${{ secrets.LENDBUZZ_PASS }}
       - name: Build and publish to registry
         run: |
-          docker build . --file Dockerfile --tag interview-app:$(date +%s)
-          docker tag interview-app:$(date +%s) interview-app-local/interview-app:$(date +%s)
-          docker push delizardo.jfrog.io/interview-app-local/interview-app:$(date +%s)
+          docker build . --file Dockerfile --tag interview-app:latest
+          docker tag interview-app:latest interview-app-local/interview-app:latest
+          docker push delizardo.jfrog.io/interview-app-local/interview-app:latest
