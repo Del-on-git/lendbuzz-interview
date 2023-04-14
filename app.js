@@ -9,7 +9,7 @@ const PG_CONFIG = {
 };
 
 app.get("/", function (req, res) {
-  res.send("Hello world!");
+  res.send("Hello, world! Fancy meeting you here ;)");
 });
 
 app.get("/db_healthcheck", async function (_, res) {
