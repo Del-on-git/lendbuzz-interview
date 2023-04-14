@@ -13,14 +13,14 @@ jobs:
   Deploy:
     runs-on: ubuntu-latest
     steps:
-      -name: Login to app host
-       uses: appleboy/ssh-action@master
-       with:
-        host: ${{ secrets.LENDBUZZ_APP_HOST_IP }}
-        username: ${{ secrets.LENDBUZZ_APP_HOST_USER }}
-        key: ${{ secrets.LENDBUZZ_APP_HOST_PRIVATE_KEY }}
-        port: 22
-        script: |
-          docker login -u ${{ secrets.LENDBUZZ_USER }} -p ${{ secrets.LENDBUZZ_PASS }} delizardo.jfrog.io
-          docker pull delizardo.jfrog.io/interview-app-local/interview-app:latest
-          docker-compose restart
+      - name: Login to app host
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.LENDBUZZ_APP_HOST_IP }}
+          username: ${{ secrets.LENDBUZZ_APP_HOST_USER }}
+          key: ${{ secrets.LENDBUZZ_APP_HOST_PRIVATE_KEY }}
+          port: 22
+          script: |
+            docker login -u ${{ secrets.LENDBUZZ_USER }} -p ${{ secrets.LENDBUZZ_PASS }} delizardo.jfrog.io
+            docker pull delizardo.jfrog.io/interview-app-local/interview-app:latest
+            docker-compose restart
