@@ -1,0 +1,18 @@
+version: "3"
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+    ports:
+      - "5555:5432"
+  app:
+    image: delizardo.jfrog.io/interview-app-local/interview-app:latest
+    environment:
+      - DB_NAME=postgres
+      - DB_HOST=db
+      - DB_USER=postgres
+      - DB_PASS=postgres
+    ports:
+      - "3000:3000"
