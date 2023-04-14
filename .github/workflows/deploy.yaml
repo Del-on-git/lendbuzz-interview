@@ -23,4 +23,6 @@ jobs:
           script: |
             docker login -u ${{ secrets.LENDBUZZ_USER }} -p ${{ secrets.LENDBUZZ_PASS }} delizardo.jfrog.io
             docker pull delizardo.jfrog.io/interview-app-local/interview-app:latest
-            docker-compose restart
+            docker rmi $(docker images -f dangling=true -q)
+            docker-compose stop
+            docker-compose up
